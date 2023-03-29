@@ -1,0 +1,3 @@
+docker commands
+
+docker compose -f local.yml run --rm django celery -A config:celery_app beat -l info
