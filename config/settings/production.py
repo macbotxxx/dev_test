@@ -10,17 +10,8 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["ecasglobal.xyz"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
-# DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('TEXT_NAME'),
-        'USER': env('TEXT_USER'),
-        'PASSWORD': env('TEXT_PASSWORD'),
-        'HOST': env('TEXT_HOST'),
-        'PORT': '',
-    }
-}
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
+
 # CACHES
 # ------------------------------------------------------------------------------
 CACHES = {
