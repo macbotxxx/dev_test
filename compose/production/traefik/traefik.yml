@@ -40,7 +40,11 @@ http:
       tls:
         # https://docs.traefik.io/master/routing/routers/#certresolver
         certResolver: letsencrypt
-
+    web-router:
+      rule: "Host(`ecasglobal.xyz`) || Host(`www.ecasglobal.xyz`)"
+      entryPoints:
+        - web
+      service: django
     flower-secure-router:
       rule: "Host(`ecasglobal.xyz`)"
       entryPoints:
