@@ -1,12 +1,11 @@
 # import Django Packages
-from django.core.mail import send_mail
+
 # import DRF packages
-from rest_framework.throttling import AnonRateThrottle , UserRateThrottle
+from rest_framework.throttling import UserRateThrottle
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework import status, serializers
-from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView , CreateAPIView, UpdateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import AllowAny
+from rest_framework import status
+from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 # import tasks functions
 from mytestApis.tasks import send_email_func
 # import DRF serializers
