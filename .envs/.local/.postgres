@@ -1,6 +1,6 @@
 # PostgreSQL
 # ------------------------------------------------------------------------------
-POSTGRES_HOST=dev_test1_local_postgres
+POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
 POSTGRES_DB=dev_test1
 POSTGRES_USER=debug
