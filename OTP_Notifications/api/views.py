@@ -33,6 +33,7 @@ class OtpView ( CreateAPIView ):
         When adding an income, quantity is not required.
         **Adding an Expense**:
         When adding an income, quantity is optional and defaults to 1. 
+        making changes 
     """
     permission_classes = [ AllowAny,]
     serializer_class = OTP_Serializer
