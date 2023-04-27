@@ -5,6 +5,7 @@ from OTP_Notifications.models import OTP
 
 
 class OTP_Serializer(serializers.ModelSerializer):
+
     class Meta:
         model = OTP
         fields = ('email',)

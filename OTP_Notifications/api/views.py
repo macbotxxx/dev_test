@@ -24,7 +24,16 @@ def otp_pin_generator():
 
 
 
-class OPT_View ( CreateAPIView ):
+class OtpView ( CreateAPIView ):
+    """
+        Create a Budget Item
+        This endpoint allows you to create a new Budget Item by an authenticated user.
+        A budget item can be either an INCOME or EXPENSE.
+        **Adding an Income**:
+        When adding an income, quantity is not required.
+        **Adding an Expense**:
+        When adding an income, quantity is optional and defaults to 1. 
+    """
     permission_classes = [ AllowAny,]
     serializer_class = OTP_Serializer
     queryset = OTP.objects.all()
@@ -55,7 +64,16 @@ class OPT_View ( CreateAPIView ):
 
 
 
-class OTP_Verification_View (ListAPIView):
+class OtpVerificationView (ListAPIView):
+    """
+        Create a Budget Item
+        This endpoint allows you to create a new Budget Item by an authenticated user.
+        A budget item can be either an INCOME or EXPENSE.
+        **Adding an Income**:
+        When adding an income, quantity is not required.
+        **Adding an Expense**:
+        When adding an income, quantity is optional and defaults to 1. 
+    """
     permission_classes = [ AllowAny,]
     serializer_class = OTP_Serializer
     queryset = OTP.objects.all()

@@ -80,6 +80,7 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "django_celery_beat",
+    # "django_celery_results",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
@@ -326,6 +327,7 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    # "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.NamespaceVersioning",
 
     # Throttling settings
     # 'DEFAULT_THROTTLE_CLASSES': [
@@ -359,5 +361,7 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
 }
+
+
 # Your stuff...
 # ------------------------------------------------------------------------------

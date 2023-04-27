@@ -26,13 +26,17 @@ def send_email_func(email):
 
 @celery_app.task()
 def test_email_notification():
-    """Sending email notification"""
+    """
+    Sending email notification , this is a task that will be executed
+    after 15 seconds by sneding email to the users and notifying them about the 
+    new api update that will be available soon.
+    """
 
     send_mail(
-            'Subject here',
-            'this is a scheduled notification using celery and await time',
+            'Update Kroon Network V2 API',
+            'this is to imform you that from so and soo day that the v1 API wont be available again , kindly start migrating to v2 for better performance.',
             'user@example.com',
             ['to@example.com'],
             fail_silently=False,
             )
-    return "Done"
+    return "Notification is published"

@@ -39,23 +39,22 @@ class NewsFeedView( ListCreateAPIView ):
     queryset = News.objects.all()
     throttle_classes = [ UserRateThrottle, ]
 
-    def post (self, request, *args, **kwargs):
-        serializer = self.serializer_class( data = request.data )
-        if serializer.is_valid():
-            serializer.save()
-            # randomize user email
-            email = "user@example.com"
-            # email to the given user email address
-            send_email_func.delay(email=email)
-            # return function response
-            return Response({ 'status':'successful', 'message':'news feed published successfully', 'data':serializer.data }, status=status.HTTP_200_OK )
-        
-        return Response( serializer.errors , status=status.HTTP_400_BAD_REQUEST )
+    def get_verisoning(self, request, *args, **kwargs):
+        return request.headers.get("Version", None)
+
+    def create (self, request, *args, **kwargs):
+        # randomize user email
+        email = "user@example.com"
+        # email to the given user email address
+        send_email_func.delay(email=email)
+        # return function response
+        return self.create(request, *args, **kwargs)
     
 
     def get (self, request, *args, **kwargs):
         news_feed = self.get_queryset()
-        serializer = self.serializer_class(news_feed , many=True)
+        print(self.get_verisoning(request))
+        serializer = self.serializer_class(news_feed , many=True , context={'request': request} )
         # return function response
         return Response({ 'status':'successful', 'message':'news feed list is fetched successfully', 'data':serializer.data }, status=status.HTTP_200_OK )
 

@@ -32,9 +32,10 @@ urlpatterns += [
         SpectacularSwaggerView.as_view(url_name="api-schema"),
         name="api-docs",
     ),
+    
 
     # testing endpoint
-    path("testing-apis/", include("mytestApis.api.urls")),
+    path("v1/testing-apis/", include("mytestApis.api.urls")),
     path("OTP/", include("OTP_Notifications.api.urls")),
 
 ]
