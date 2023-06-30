@@ -5,11 +5,12 @@ from rest_framework.throttling import UserRateThrottle
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework import status
+from django_filters import rest_framework as filters
 from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 # import tasks functions
 from mytestApis.tasks import send_email_func
 # import DRF serializers
-from .serializers import SendEmailSerializer , NewsSerializer
+from .serializers import SendEmailSerializer , NewsSerializer , NewsFeedFilter
 # import app models
 from mytestApis.models import News
 
@@ -38,6 +39,8 @@ class NewsFeedView( ListCreateAPIView ):
     serializer_class = NewsSerializer
     queryset = News.objects.all()
     throttle_classes = [ UserRateThrottle, ]
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = NewsFeedFilter
 
     def get_verisoning(self, request, *args, **kwargs):
         return request.headers.get("Version", None)
@@ -51,12 +54,12 @@ class NewsFeedView( ListCreateAPIView ):
         return self.create(request, *args, **kwargs)
     
 
-    def get (self, request, *args, **kwargs):
-        news_feed = self.get_queryset()
-        print(self.get_verisoning(request))
-        serializer = self.serializer_class(news_feed , many=True , context={'request': request} )
-        # return function response
-        return Response({ 'status':'successful', 'message':'news feed list is fetched successfully', 'data':serializer.data }, status=status.HTTP_200_OK )
+    # def get (self, request, *args, **kwargs):
+    #     news_feed = self.get_queryset()
+    #     print(self.get_verisoning(request))
+    #     serializer = self.serializer_class(news_feed , many=True , context={'request': request} )
+    #     # return function response
+    #     return Response({ 'status':'successful', 'message':'news feed list is fetched successfully', 'data':serializer.data }, status=status.HTTP_200_OK )
 
     
 

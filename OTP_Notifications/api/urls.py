@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views 
 
-app_name = "otp_section"
+app_name = "otp section"
 
 urlpatterns = [
     path('send-otp/', views.OtpView.as_view(), name='send-otp'),

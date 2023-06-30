@@ -34,6 +34,10 @@ class OtpView ( CreateAPIView ):
         **Adding an Expense**:
         When adding an income, quantity is optional and defaults to 1. 
         making changes 
+  
+     login
+     <p>【Receive】tel: tel password: password keep_login: Token change
+     <p>【Return】200 success 400 failed
     """
     permission_classes = [ AllowAny,]
     serializer_class = OTP_Serializer
