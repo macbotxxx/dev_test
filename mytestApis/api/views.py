@@ -13,7 +13,7 @@ from mytestApis.tasks import send_email_func
 from .serializers import SendEmailSerializer , NewsSerializer , NewsFeedFilter
 # import app models
 from mytestApis.models import News
-
+# from ipware import get_
 
 
 class TestAPIView( CreateAPIView ):
@@ -53,16 +53,17 @@ class NewsFeedView( ListCreateAPIView ):
         # return function response
         return self.create(request, *args, **kwargs)
     
-
-    # def get (self, request, *args, **kwargs):
-    #     news_feed = self.get_queryset()
-    #     print(self.get_verisoning(request))
-    #     serializer = self.serializer_class(news_feed , many=True , context={'request': request} )
-    #     # return function response
-    #     return Response({ 'status':'successful', 'message':'news feed list is fetched successfully', 'data':serializer.data }, status=status.HTTP_200_OK )
-
+    # def perform_create (self, serializer ):
+    #     serializer.save( user = self.request.user )
     
 
+    def get (self, request, *args, **kwargs):
+        news_feed = self.get_queryset()
+        
+        # return function response
+        return self.list(request, *args, **kwargs)
+
+    
 class NewsFeedListView(RetrieveUpdateDestroyAPIView):
     permission_classes = [ AllowAny, ]
     serializer_class = NewsSerializer

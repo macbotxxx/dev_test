@@ -6,10 +6,24 @@
 # POSTGRES_USER=doadmin
 # POSTGRES_PASSWORD=AVNS_gPg9TCbNEZWKC2GQ3op
 
+# POSTGRES_HOST=localhost
+# POSTGRES_PORT=5432
+# POSTGRES_DB=testingdb
+# POSTGRES_USER=postgres
+# POSTGRES_PASSWORD=
+
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
 POSTGRES_DB=dev_test1
 POSTGRES_USER=debug
 POSTGRES_PASSWORD=debug
+
 DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
 POSTGRES_ENGINE=django.db.backends.postgresql_psycopg2
+
+# docker run --name dev_test1 -e POSTGRES_PASSWORD=M080341i -p 5432:5432 -d user
+# run –name pgsql-dev -e POSTGRES_PASSWORD=Welcome4$ -p 5432:5432 Postgres
+
+# PGPASSWORD="AVNS_gUZYnhhvUxbmwGFcie7" pg_dump --host "development-db-do-user-11030979-0.b.db.ondigitalocean.com" --port "25060" --username "kwt-dev-admin" --no-password --dbname "kwt-dev-db" > devdb.gz
+
+# docker cp /Users/macbookpro/devdb.dump e367bde25f8f:/backups/devdb.gz
